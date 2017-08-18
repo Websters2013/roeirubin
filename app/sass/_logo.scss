@@ -1,0 +1,18 @@
+.logo {
+  display: block;
+  width: calc( 60% - 35px );
+  max-width: 450px;
+
+  img{
+    display: block;
+    width: 100%;
+  }
+
+}
+
+@media (min-width: $tablet-landscape) {
+  .logo {
+    margin-bottom: 45px;
+  }
+}
+

@@ -1,0 +1,30 @@
+.contact-us {
+  margin: 7vh 0 9vh;
+  font-size: 15px;
+  line-height: 25px;
+  font-style: normal;
+
+  a{
+    color: #393939;
+  }
+
+}
+
+@media (min-width: $tablet-landscape) {
+  .contact-us {
+    margin: 0;
+    font-size: 18px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .contact-us {
+    font-size: 25px;
+
+    a{
+      cursor: text;
+    }
+
+  }
+}
