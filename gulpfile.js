@@ -26,8 +26,28 @@ let paths = {
         {
             dist: 'index.min.js',
             contains: [
-                'app/js/jquery.index.js',
                 'app/js/jquery.main.js'
+            ]
+        },
+        {
+            dist: 'content.min.js',
+            contains: [
+                'app/js/jquery.main.js',
+                'app/js/jquery.content.js'
+            ]
+        },
+        {
+            dist: 'gallery.min.js',
+            contains: [
+                'app/js/jquery.main.js',
+                'app/js/jquery.media-gallery.js'
+            ]
+        },
+        {
+            dist: 'contact.min.js',
+            contains: [
+                'app/js/jquery.main.js',
+                'app/js/jquery.form.validator.js'
             ]
         }
     ],

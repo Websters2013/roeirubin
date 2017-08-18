@@ -32,6 +32,20 @@
     font-size: 20px;
   }
 
+  &__sub-menu{
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height .3s ease;
+    transition: height .3s ease;
+
+    ul{
+      padding: 10px 15px 0;
+      background-color: #eeedea;
+      overflow: hidden;
+    }
+
+  }
+
   &.visible{
     opacity: 1;
     visibility: visible;
@@ -103,7 +117,6 @@
 @media (min-width: $tablet-portrait) {
   .menu {
 
-
     &-mobile-btn{
 
     }
@@ -114,10 +127,12 @@
 @media (min-width: $tablet-landscape) {
   .menu {
     display: flex;
+    align-items: flex-start;
     position: static;
     width: auto;
     opacity: 1;
     visibility: visible;
+    overflow-y: visible;
     background-color: transparent;
 
     li{
@@ -138,6 +153,14 @@
         border-bottom: 1px solid #393939;
         -webkit-transition: left .3s ease;
         transition: left .3s ease;
+      }
+
+      &.open{
+
+        &:after{
+          left: 0;
+        }
+
       }
 
       &:hover:after{

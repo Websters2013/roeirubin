@@ -10,6 +10,7 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/perfect-scrollbar.min.css">
     <link rel="stylesheet" href="css/index.css">
 
 </head>
@@ -18,94 +19,103 @@
     <!-- site -->
     <div class="site">
 
-        <!-- site__content -->
-        <div class="site__content">
+        <!-- site__aside -->
+        <aside class="site__aside">
 
-            <aside class="site__aside">
+            <!-- site__head -->
+            <div class="site__head">
 
-                <!-- site__head -->
-                <div class="site__head">
-
-                    <!-- menu-mobile-btn -->
-                    <div class="menu-mobile-btn">
-                        <span></span>
-                    </div>
-                    <!-- /menu-mobile-btn -->
-
-                    <!-- logo -->
-                    <h1 class="logo">
-                        <img src="img/logo.jpg" alt="img"/>
-                    </h1>
-                    <!-- /logo -->
-
-                    <!-- menu -->
-                    <nav class="menu">
-
-                        <ul>
-                            <li class="active"><a href="#">עמוד הבית </a></li>
-                            <li><a href="#">אודות </a></li>
-                            <li><a href="#">גלריה </a></li>
-                            <li><a href="#">אדריכלים ומפקחי בניה</a></li>
-                            <li><a href="#">המלצות </a></li>
-                            <li><a href="#"> צרו קשר</a></li>
-                        </ul>
-
-                    </nav>
-                    <!-- /menu -->
-
+                <!-- menu-mobile-btn -->
+                <div class="menu-mobile-btn">
+                    <span></span>
                 </div>
-                <!-- /site__head -->
+                <!-- /menu-mobile-btn -->
 
-                <!-- contact-us -->
-                <address class="contact-us">
+                <!-- logo -->
+                <h1 class="logo">
+                    <img src="img/logo.jpg" alt="img"/>
+                </h1>
+                <!-- /logo -->
 
-                    <dl>
-                        <dt>רועי רובין</dt>
-                        <dd> טלפון:  <a href="tel:0545504516">054-5504516</a></dd>
-                        <dd>דואר אלקטרוני: <a href="mailto:roeirubin.pro@gmail.com">roeirubin.pro@gmail.com</a></dd>
-                        <dd>אתר: <a href="http://www.roeirubin.co.il" target="_blank">www.roeirubin.co.il</a></dd>
-                    </dl>
+                <!-- menu -->
+                <nav class="menu">
 
-                </address>
-                <!-- /contact-us -->
+                    <ul>
+                        <li class="active"><a href="#">עמוד הבית </a></li>
+                        <li><a href="#">אודות </a></li>
+                        <li>
+                            <a href="#">גלריה </a>
+                            <div class="menu__sub-menu">
+                                <ul>
+                                    <li><a href="#">בתים</a></li>
+                                    <li><a href="#">בריכות</a></li>
+                                    <li><a href="#">פסיפס</a></li>
+                                    <li><a href="#">בריקים</a></li>
+                                    <li><a href="#">ריצוף</a></li>
+                                    <li><a href="#">התהליך</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">אדריכלים ומפקחי בניה</a></li>
+                        <li><a href="#">המלצות </a></li>
+                        <li><a href="#"> צרו קשר</a></li>
+                    </ul>
 
-            </aside>
+                </nav>
+                <!-- /menu -->
 
-            <!-- hero -->
-            <div class="hero">
+            </div>
+            <!-- /site__head -->
 
-                <h2>רועי רובין חברה לבניה </h2>
+            <!-- contact-us -->
+            <address class="contact-us">
 
-                <div class="hero__swiper swiper-container">
+                <dl>
+                    <dt>רועי רובין</dt>
+                    <dd> טלפון:  <a href="tel:0545504516">054-5504516</a></dd>
+                    <dd>דואר אלקטרוני: <a href="mailto:roeirubin.pro@gmail.com">roeirubin.pro@gmail.com</a></dd>
+                    <dd>אתר: <a href="http://www.roeirubin.co.il" target="_blank">www.roeirubin.co.il</a></dd>
+                </dl>
 
-                    <div class="swiper-wrapper">
+            </address>
+            <!-- /contact-us -->
 
-                        <div class="hero__slide active swiper-slide">
+        </aside>
+        <!-- /site__aside -->
 
-                            <img src="img/hero-001.jpg" alt="/">
+        <!-- hero -->
+        <div class="hero">
 
-                        </div>
-                        <div class="hero__slide active swiper-slide">
+            <h2>רועי רובין חברה לבניה </h2>
 
-                            <img src="img/hero-002.jpg" alt="/">
+            <div class="hero__swiper swiper-container">
 
-                        </div>
+                <div class="swiper-wrapper">
+
+                    <div class="hero__slide active swiper-slide">
+
+                        <img src="img/hero-001.jpg" alt="/">
+
+                    </div>
+                    <div class="hero__slide active swiper-slide">
+
+                        <img src="img/hero-002.jpg" alt="/">
 
                     </div>
 
                 </div>
 
             </div>
-            <!-- /hero -->
 
         </div>
-        <!-- /site__content -->
+        <!-- /hero -->
 
     </div>
     <!-- /site -->
 
     <script src="js/vendors/jquery-2.2.1.min.js"></script>
     <script src="js/vendors/swiper.jquery.min.js"></script>
+    <script src="js/vendors/perfect-scrollbar.jquery.min.js"></script>
     <script src="js/index.min.js"></script>
 </body>
 </html>
