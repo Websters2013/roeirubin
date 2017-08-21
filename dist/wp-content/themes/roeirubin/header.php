@@ -45,6 +45,7 @@ function is_tree( $pid ){
 
 	return false;
 }
+
 $menu_name = 'menu';
 $locations = get_nav_menu_locations();
 if( $locations && isset($locations[ $menu_name ]) ){
@@ -70,93 +71,84 @@ if( $locations && isset($locations[ $menu_name ]) ){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="address=no">
-    <title>Title</title>
-    <?php if(is_single()) { ?>
-        <meta property="og:title" content="<?= get_the_title($post->ID); ?>"/>
-        <meta property="og:description" content="<?= get_field('excerpt', $post->ID); ?> "/>
-        <meta property="og:image" content="<?= get_the_post_thumbnail_url($post->ID); ?>">
-        <meta property="og:type" content="article"/>
-        <meta property="og:url" content= "<?= get_permalink($post->ID); ?>" />
-    <?php } ?>
 
-<?php wp_head(); ?>
+    <title>Title</title>
+	<?php wp_head(); ?>
+
 </head>
-<body data-action="<?php echo admin_url( 'admin-ajax.php' );?>">
+<body>
 
 <!-- site -->
 <div class="site">
 
-    <!-- site__header -->
-    <div class="site__header">
+    <!-- site__aside -->
+    <aside class="site__aside">
 
-        <?= $logo; ?>
+        <!-- site__head -->
+        <div class="site__head">
 
-        <!-- mobile-menu -->
-        <div class="mobile-menu">
-
-            <?= $menu_list; ?>
-
-            <!-- social -->
-            <div class="social">
-
-                <?= $socials_list; ?>
-
+            <!-- menu-mobile-btn -->
+            <div class="menu-mobile-btn">
+                <span></span>
             </div>
-            <!-- /social -->
+            <!-- /menu-mobile-btn -->
+
+            <?php if(is_front_page()) {
+                echo '<!-- logo --><h1 class="logo">'.$logo.'</h1><!-- /logo -->';
+            }else {
+	            echo '<!-- logo --><a class="logo">'.$logo.'</a><!-- /logo -->';
+            }
+            ?>
+
+            <!-- menu -->
+            <nav class="menu">
+
+                <ul>
+                    <li class="active"><a href="#">עמוד הבית </a></li>
+                    <li><a href="#">אודות </a></li>
+                    <li>
+                        <a href="#">גלריה </a>
+                        <div class="menu__sub-menu">
+                            <ul>
+                                <li><a href="#">בתים</a></li>
+                                <li><a href="#">בריכות</a></li>
+                                <li><a href="#">פסיפס</a></li>
+                                <li><a href="#">בריקים</a></li>
+                                <li><a href="#">ריצוף</a></li>
+                                <li><a href="#">התהליך</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">אדריכלים ומפקחי בניה</a></li>
+                    <li><a href="#">המלצות </a></li>
+                    <li><a href="#"> צרו קשר</a></li>
+                </ul>
+
+            </nav>
+            <!-- /menu -->
 
         </div>
-        <!-- /mobile-menu -->
+        <!-- /site__head -->
 
-        <!-- menu-mobile-btn -->
-        <div class="mobile-menu-btn">
-            <span></span>
-        </div>
-        <!-- /menu-mobile-btn -->
+        <!-- contact-us -->
+        <address class="contact-us">
 
-      <?php if(!is_front_page()) { ?>
-          <div class="header__promo">
-             <?= $hero_image_other_page; ?>
-          </div>
-      <?php } ?>
+            <dl>
+                <dt>רועי רובין</dt>
+                <dd> טלפון:  <a href="tel:0545504516">054-5504516</a></dd>
+                <dd>דואר אלקטרוני: <a href="mailto:roeirubin.pro@gmail.com">roeirubin.pro@gmail.com</a></dd>
+                <dd>אתר: <a href="http://www.roeirubin.co.il" target="_blank">www.roeirubin.co.il</a></dd>
+            </dl>
 
-    </div>
-    <!-- /site__header -->
+        </address>
+        <!-- /contact-us -->
 
-
-
-    <?php if(is_front_page()) { ?>
-
-    <!-- hero -->
-    <div class="hero">
-
-        <!-- hero__person -->
-        <div class="hero__person">
-
-            <img src="<?= $hero_image['url']; ?>" alt="<?= $hero_image['alt']; ?>" title="<?= $hero_image['title']; ?>">
-
-            <!-- hero__person-info -->
-            <div class="hero__person-info">
-                <?= get_field('hero_titles', 2); ?>
-            </div>
-            <!-- /hero__person-info -->
-
-        </div>
-        <!-- /hero__person -->
-
-        <!-- hero__content -->
-        <div class="hero__content">
-	        <?= get_field('hero_content', 2); ?>
-        </div>
-        <!-- /hero__content -->
-
-    </div>
-    <!-- /hero -->
-
-    <?php  } ?>
+    </aside>
+    <!-- /site__aside -->
