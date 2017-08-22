@@ -4,7 +4,7 @@
 
     $(function () {
 
-        $.each( $( '.media-gallery' ), function(){
+        $.each( $( '.media-gallery_view' ), function(){
 
             new MediaGallery ( $( this ) )
 
