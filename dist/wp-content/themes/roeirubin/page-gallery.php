@@ -17,7 +17,7 @@ if($gallery) {
 ?>
 
 <!-- media-gallery -->
-<div class="media-gallery">
+<div class="media-gallery media-gallery_view">
 
 	<?= $gallery_string; ?>
 
