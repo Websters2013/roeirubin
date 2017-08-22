@@ -83,7 +83,7 @@ if( $locations && isset($locations[ $menu_name ]) ){
 	<?php wp_head(); ?>
 
 </head>
-<body>
+<body data-mail="<?= get_template_directory_uri() .'/mail.php'; ?>">
 
 <!-- site -->
 <div class="site">

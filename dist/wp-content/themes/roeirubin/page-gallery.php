@@ -9,7 +9,7 @@ $gallery_string = '';
 if($gallery) {
 	foreach ($gallery as $row) {
 		$image = $row['image'];
-		$gallery_string .= '<a href="'.$image['url'].'" class="media-gallery__item" data-tile="'.$image['title'].'">
+		$gallery_string .= '<a href="'.$image['url'].'" class="media-gallery__item" data-title="'.$image['title'].'">
 		<img src="'.$image['url'].'" alt="'.$image['alt'].'" title="'.$image['title'].'">
 	</a>';
 	}
