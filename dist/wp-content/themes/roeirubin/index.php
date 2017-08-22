@@ -3,27 +3,26 @@
 Template Name: Home
 */
 get_header();
-
+$post_id = 2;
+$slider= get_field('hero_slider', $post_id );
+$slider_string = '';
+if($slider) {
+    foreach ($slider as $row) {
+        $image = $row['image'];
+       $slider_string .= '<div class="hero__slide swiper-slide"><img src="'.$image['url'].'" alt="'.$image['alt'].'" title="'.$image['title'].'"></div>';
+    }
+}
 ?>
     <!-- hero -->
     <div class="hero">
 
-        <h2>רועי רובין חברה לבניה </h2>
+        <h2><?= get_field('hero_title', $post_id ); ?></h2>
 
         <div class="hero__swiper swiper-container">
 
             <div class="swiper-wrapper">
 
-                <div class="hero__slide active swiper-slide">
-
-                    <img src="img/hero-001.jpg" alt="/">
-
-                </div>
-                <div class="hero__slide active swiper-slide">
-
-                    <img src="img/hero-002.jpg" alt="/">
-
-                </div>
+                <?= $slider_string; ?>
 
             </div>
 

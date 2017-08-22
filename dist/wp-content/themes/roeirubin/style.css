@@ -1,26 +1,15 @@
 /*
-Theme Name: Pro photo studio
-Theme URI: localhost
+Theme Name: Roeirubin
+Theme URI: roeirubin.co.il
 Author: HVH
 Author URI: localhost
-Description: Pro photo studio
+Description: Roeirubin
 Version: 2.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: Pro photo studio
-Text Domain: pro-photo-studio
+Tags: Roeirubin
+Text Domain: roeirubin
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
-span.wpcf7-not-valid-tip {
-    display: none;
-}
-.subscribe input[type=text].wpcf7-not-valid,
-.subscribe input[type=email].wpcf7-not-valid,
-.hiring__form input[type=tel].wpcf7-not-valid,
-.hiring__form input[type=text].wpcf7-not-valid,
-.hiring__form input[type=email].wpcf7-not-valid
- {
-    border: 1px solid red !important;
-}

@@ -1,33 +1,18 @@
 <?php
 
-$logo = get_field('logo', 2);
+$home_id = 2;
+$logo = get_field('logo', $home_id);
 $logo = '<img src="'.$logo['url'].'" alt="'.$logo['alt'].'" title="'.$logo['title'].'">';
 
-$hero_image_other_page = get_field('background');
-if(is_page_template('page-services-single.php')) {
+remove_filter('acf_the_content', 'wpautop');
+$contacts = get_field('contacts', $home_id);
 
-	$term = get_term_by('slug', $_GET['category'], 'portfolio');
-	
-	$hero_image_other_page = get_field('background', 'portfolio_'.$term->term_id);
+$contacts_string = '';
+if($contacts) {
+    foreach ($contacts as $row) {
+        $contacts_string .= '<dt>'.$row['item'].'</dt>';
+    }
 }
-$hero_image_other_page = '<img src="'.$hero_image_other_page['url'].'" alt="'.$hero_image_other_page['alt'].'" title="'.$hero_image_other_page['title'].'">';
-if(is_front_page()) {
-	$logo = '<!-- logo --><h1 class="logo">'.$logo.'</h1><!-- /logo -->';
-} else {
-	$logo = '<!-- logo --><a href="'.get_site_url().'" class="logo">'.$logo.'</a><!-- /logo -->';
-}
-
-$socials = get_field('socials_list', 18);
-if(!empty($socials)) {
-	foreach ( $socials as $row ) {
-		if((array_search('0', $row['show']) === false) || empty($row['image'])) {
-			continue;
-		}
-		$socials_list .= '<!-- social__item --><a class="social__item" href="'.$row['url'].'" target="_blank">'.file_get_contents($row['image']).'</a><!-- /social__item -->';
-	}
-}
-
-$hero_image =  get_field('hero_image', 2);
 
 function is_tree( $pid ){
 	global $post;
@@ -52,7 +37,8 @@ if( $locations && isset($locations[ $menu_name ]) ){
 
 	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 	$menu_items = wp_get_nav_menu_items( $menu );
-	$menu_list = '<!-- menu --><nav class="menu">';
+	$menu_list = '<ul>';
+	$flag = false;
 
 	foreach ( (array) $menu_items as $key => $menu_item ){
 
@@ -63,12 +49,26 @@ if( $locations && isset($locations[ $menu_name ]) ){
 			$active = ' active';
 		}
 
-		$menu_list .= '<a class="menu__item'.$active.'" href="'.$perm.'">'.$menu_item->title.'</a>';
-	}
+		if($menu_item->menu_item_parent === '0' && $flag === true) {
+          $menu_list .= '</ul></div></li>';
+          $flag = false;
+        }
+      if($menu_item->menu_item_parent === '0') {
+	      $menu_list .= '<li><a class="menu__item'.$active.'" href="'.$perm.'">'.$menu_item->title.'</a>';
+      }
+      if ($menu_item->menu_item_parent > 0 && $flag === false) {
+	      $menu_list .= '<div class="menu__sub-menu"><ul>';
+	      $flag = true;
+      }
+      if($menu_item->menu_item_parent > 0) {
+        $menu_list .= '<li><a class="menu__item' . $active . '" href="' . $perm . '">' . $menu_item->title . '</a></li>';
+      }
 
-	$menu_list .= '</nav><!-- /menu -->';
+	}
+  $menu_list .= '</ul>';
 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -110,45 +110,23 @@ if( $locations && isset($locations[ $menu_name ]) ){
             <!-- menu -->
             <nav class="menu">
 
-                <ul>
-                    <li class="active"><a href="#">עמוד הבית </a></li>
-                    <li><a href="#">אודות </a></li>
-                    <li>
-                        <a href="#">גלריה </a>
-                        <div class="menu__sub-menu">
-                            <ul>
-                                <li><a href="#">בתים</a></li>
-                                <li><a href="#">בריכות</a></li>
-                                <li><a href="#">פסיפס</a></li>
-                                <li><a href="#">בריקים</a></li>
-                                <li><a href="#">ריצוף</a></li>
-                                <li><a href="#">התהליך</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#">אדריכלים ומפקחי בניה</a></li>
-                    <li><a href="#">המלצות </a></li>
-                    <li><a href="#"> צרו קשר</a></li>
-                </ul>
+                <?= $menu_list; ?>
 
             </nav>
             <!-- /menu -->
 
         </div>
         <!-- /site__head -->
-
+        <?php if($contacts_string !== '') {?>
         <!-- contact-us -->
         <address class="contact-us">
 
             <dl>
-                <dt>רועי רובין</dt>
-                <dd> טלפון:  <a href="tel:0545504516">054-5504516</a></dd>
-                <dd>דואר אלקטרוני: <a href="mailto:roeirubin.pro@gmail.com">roeirubin.pro@gmail.com</a></dd>
-                <dd>אתר: <a href="http://www.roeirubin.co.il" target="_blank">www.roeirubin.co.il</a></dd>
+                <?= $contacts_string; ?>
             </dl>
 
         </address>
         <!-- /contact-us -->
-
+        <?php } ?>
     </aside>
     <!-- /site__aside -->
