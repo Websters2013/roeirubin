@@ -121,7 +121,7 @@
             _ajaxRequest = function(){
 
                 _request = $.ajax( {
-                    url: 'php/form.php',
+                    url: $( 'body' ).data( 'mail' ),
                     data: {
                         name: $( 'input[name=name]' ).val(),
                         email: $( 'input[name=email]' ).val(),
