@@ -18,7 +18,8 @@
             _noteSuccess = _obj.find( '.contacts__message_success' ),
             _noteWrap = _obj.find( '.contacts__message-wrap' ),
             _inputs = _obj.find( 'input, textarea' ),
-            _fields = _obj.find( '[data-required]' );
+            _fields = _obj.find( '[data-required]' ),
+            _request = new XMLHttpRequest();
 
         //private methods
         var _constructor = function () {
@@ -110,14 +111,39 @@
                             return false;
 
                         } else {
-
-                            _noteSuccess.addClass('visible');
-                            _noteWrap.css( 'height', _noteSuccess.outerHeight() )
+                            _ajaxRequest()
                             return false;
 
                         }
                     }
                 } );
+            },
+            _ajaxRequest = function(){
+
+                _request = $.ajax( {
+                    url: $( 'body' ).data( 'mail' ),
+                    data: {
+                        name: $( 'input[name=name]' ).val(),
+                        email: $( 'input[name=email]' ).val(),
+                        phone: $( 'input[name=phone]' ).val()
+                    },
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function ( data ) {
+
+                        if ( data == 1 ){
+                            _noteSuccess.addClass('visible');
+                            _noteWrap.css( 'height', _noteSuccess.outerHeight() );
+                        };
+
+                    },
+                    error: function ( XMLHttpRequest ) {
+                        if ( XMLHttpRequest.statusText != "abort" ) {
+                            console.log( 'err' );
+                        }
+                    }
+                } );
+
             },
             _makeNotValid = function ( field ) {
                 field.addClass( 'not-valid' );
